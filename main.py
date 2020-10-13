@@ -1,10 +1,14 @@
 from google.oauth2 import service_account
+import os
 
 SCOPES = ['https://www.googleapis.com/auth/cloud-platform']
-CFNAME = "projects/larc-ocio-datasci-cf8a8915/locations/us-central1/functions/function-1"
+PROJECT_NAME = os.getenv("PROJECT_NAME")
+LOCATION = os.getenv("LOCATION")
+
 
 if __name__ == "__main__":
     print("accessing cloud function")
+    CFNAME = f"projects/{PROJECT_NAME}/locations/{LOCATION}/functions/function-1"
     import googleapiclient.discovery
     SERVICE_ACCOUNT_FILE = 'service-account.json'
 
